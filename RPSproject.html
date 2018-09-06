@@ -5,6 +5,17 @@
 </head>
 <body>
    <script>
+       function computerPlay() {
+          var randnum =  Math.random()*10;
+          if(randnum == 0) {randnum = Math.random()*10}
+          if (randnum <= 3) {
+              return "Paper";
+          } else if (randnum > 6) {
+              return "Scissors"; 
+          } else {
+              return "Rock";
+          }
+       }
    </script>
 </body>
 </html>
