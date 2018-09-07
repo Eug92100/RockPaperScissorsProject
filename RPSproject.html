@@ -16,6 +16,37 @@
               return "Rock";
           }
        }
+       function RPSround() {
+           var playerSelection = prompt("Enter your choice");
+           var playerSelection = playerSelection.toLowerCase();
+           var computerSelection = computerPlay();
+           var win = "You win! ";
+           var lose = "You lose! ";
+           var com1 = "Paper beats Rock";
+           var com2 = "Rock beats Scissors";
+           var com3 = "Scissors beats Paper";
+           if (playerSelection == computerSelection) {
+               return "It's a match!";
+           }  else if (playerSelection=="paper"){
+               if (computerSelection=="Rock"){
+                var str = win + com1;
+               return str;} else {
+                var str = lose + com3;
+               return str;}
+           } else if (playerSelection == "rock"){ 
+               if (computerSelection == "Scissors") {
+                var str = win + com2;
+               return str;} else {
+                var str = lose + com1;
+               return str;}
+           } else if (playerSelection== "scissors") {
+               if (computerSelection == "Paper") {
+                var str = win + com3;
+               return str;} else {
+                var str = lose + com2;
+               return str;}
+           }
+       }
    </script>
 </body>
 </html>
