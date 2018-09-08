@@ -16,6 +16,7 @@
               return "Rock";
           }
        }
+       var str;
        function RPSround() {
            var playerSelection = prompt("Enter your choice");
            var playerSelection = playerSelection.toLowerCase();
@@ -47,6 +48,17 @@
                return str;}
            }
        }
+       function game() {
+           for (var i = 0; i <= 5; i++) {
+               RPSround();
+               var winPlayer = 0;
+              if (str.search("win")!==-1) {
+                  winPlayer++;
+              } 
+           }
+           (winPlayer >= 3)? "You beat the computer! Yeay!" : "Oh no.. the computer won the game..";
+           }
+       console.log(game())
    </script>
 </body>
 </html>
