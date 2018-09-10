@@ -6,7 +6,8 @@
 <body>
    <script>
        function computerPlay() {
-          var randnum =  Math.random()*10;
+          var randnum =  Math.random()*10; // choose a random interger between 0 and 9
+          //the next line gets rid of the zero. 
           if(randnum == 0) {randnum = Math.random()*10}
           if (randnum <= 3) {
               return "Paper";
