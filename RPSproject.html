@@ -50,15 +50,20 @@
            }
        }
        function game() {
-           for (var i = 0; i <= 5; i++) {
-               RPSround();
-               var winPlayer = 0;
+            var winPlayer = 0;
+           for (var i = 1; i <= 5; i++) {
+               var str = RPSround();
               if (str.search("win")!==-1) {
-                  winPlayer++;
+                  winPlayer = ++winPlayer;
               } 
+              alert(str + " Your score is " + winPlayer + "/" + i);
            }
-           (winPlayer >= 3)? "You beat the computer! Yeay!" : "Oh no.. the computer won the game..";
-           }
+            if (winPlayer >= 3){
+                return "You beat the computer! Yeay!";
+             } else {
+                 return "Oh no.. the computer won the game..";
+             }
+       } 
        console.log(game())
    </script>
 </body>
