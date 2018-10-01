@@ -10,11 +10,11 @@
           //the next line gets rid of the zero. 
           if(randnum == 0) {randnum = Math.random()*10}
           if (randnum <= 3) {
-              return "Paper";
+              return "paper";
           } else if (randnum > 6) {
-              return "Scissors"; 
+              return "scissors"; 
           } else {
-              return "Rock";
+              return "rock";
           }
        }
        var str;
@@ -30,19 +30,19 @@
            if (playerSelection == computerSelection) {
                return "It's a match!";
            }  else if (playerSelection=="paper"){
-               if (computerSelection=="Rock"){
+               if (computerSelection=="rock"){
                 var str = win + com1;
                return str;} else {
                 var str = lose + com3;
                return str;}
            } else if (playerSelection == "rock"){ 
-               if (computerSelection == "Scissors") {
+               if (computerSelection == "scissors") {
                 var str = win + com2;
                return str;} else {
                 var str = lose + com1;
                return str;}
            } else if (playerSelection== "scissors") {
-               if (computerSelection == "Paper") {
+               if (computerSelection == "paper") {
                 var str = win + com3;
                return str;} else {
                 var str = lose + com2;
