@@ -1,0 +1,101 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <title>Rock Paper Scissors project</title>
+</head>
+<body>
+    <button value = "rock">Rock</button>
+    <button value = "paper">Paper</button>
+    <button value = "scissors">Scissors</button>
+    <div class = "results"></div>
+
+   <script>
+       function computerPlay() {
+          var randnum =  Math.random()*10;  
+          if(randnum == 0) {randnum = Math.random()*10}
+          if (randnum <= 3) {
+              return "paper";
+          } else if (randnum > 6) {
+              return "scissors"; 
+          } else {
+              return "rock";
+          }
+       }
+       
+        var options = Array.from(document.querySelectorAll("button"));
+        var winPlayer = 0;
+        var roundsNb = 1;
+        var matches = 0;
+            options.forEach((option)  => {
+                option.addEventListener("click",function(e){
+                    var playerS = e.target.value;
+                    game(playerS);
+                });
+            });
+
+        var resultsDiv = document.querySelector(".results");
+        var currrentScore = document.createElement("h2");
+        var roundResult = document.createElement("h3");
+        var totalScore = document.createElement("h1");
+        
+       function RPSround(playerSelection) {
+           var computerSelection = computerPlay();
+           var win = "You win! ";
+           var lose = "You lose! ";
+           var com1 = "Paper beats Rock";
+           var com2 = "Rock beats Scissors";
+           var com3 = "Scissors beats Paper";
+           if (playerSelection == computerSelection) {
+               roundResult.textContent = "It's a match!";
+           }  else if (playerSelection=="paper"){
+               if (computerSelection=="rock"){
+                    roundResult.textContent = win + com1;
+                } else {
+                    roundResult.textContent = lose + com3;
+                }
+           } else if (playerSelection == "rock"){ 
+               if (computerSelection == "scissors") {
+                    roundResult.textContent = win + com2;
+                } else {
+                    roundResult.textContent =lose + com1;}
+           } else if (playerSelection== "scissors") {
+               if (computerSelection == "paper") {
+                    roundResult.textContent = win + com3;
+                } else {
+                    roundResult.textContent = lose + com2;}
+           }
+           resultsDiv.appendChild(roundResult);
+       }
+       
+
+       function game(playerSelection) {
+            totalScore.textContent = "";
+            RPSround(playerSelection);
+           if (winPlayer < 5 && roundsNb - winPlayer - matches < 5 ) {
+              if (roundResult.textContent.search("win")!==-1) {
+                  winPlayer = ++winPlayer;
+              } else if (roundResult.textContent.search("match")!==-1){
+                  matches = ++matches;
+              }
+              currrentScore.textContent = " Your score is " + winPlayer + "/" + roundsNb;
+              roundsNb++;
+           } else if (winPlayer == 5) {
+                currrentScore.textContent = " Your score is " + winPlayer + "/" + roundsNb;
+                totalScore.textContent =  "You beat the computer! Click on a button to start again ";
+                roundsNb = 0;
+                winPlayer = 0;
+                matches =0;
+             } else {
+                currrentScore.textContent = " Your score is " + winPlayer + "/" + roundsNb;
+                totalScore.textContent = "Oh no.. the computer won the game.. Click on a button to start again";
+                roundsNb = 0;
+                winPlayer = 0;
+                matches =0;
+             }
+             resultsDiv.appendChild(currrentScore);
+             resultsDiv.appendChild(totalScore);
+       } 
+       
+   </script>
+</body>
+</html>
