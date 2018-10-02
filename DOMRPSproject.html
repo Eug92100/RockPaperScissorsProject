@@ -77,9 +77,9 @@
               } else if (roundResult.textContent.search("match")!==-1){
                   matches = ++matches;
               }
+              ++roundsNb;
               currrentScore.textContent = " Your score is " + winPlayer + "/" + roundsNb;
-              roundsNb++;
-           } else if (winPlayer == 5) {
+              if (winPlayer == 5) {
                 currrentScore.textContent = " Your score is " + winPlayer + "/" + roundsNb;
                 totalScore.textContent =  "You beat the computer! Click on a button to start again ";
                 roundsNb = 0;
