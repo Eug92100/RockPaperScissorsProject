@@ -24,7 +24,7 @@
        
         var options = Array.from(document.querySelectorAll("button"));
         var winPlayer = 0;
-        var roundsNb = 1;
+        var roundsNb = 0;
         var matches = 0;
             options.forEach((option)  => {
                 option.addEventListener("click",function(e){
@@ -71,22 +71,23 @@
        function game(playerSelection) {
             totalScore.textContent = "";
             RPSround(playerSelection);
-           if (winPlayer < 5 && roundsNb - winPlayer - matches < 5 ) {
-              if (roundResult.textContent.search("win")!==-1) {
-                  winPlayer = ++winPlayer;
-              } else if (roundResult.textContent.search("match")!==-1){
-                  matches = ++matches;
-              }
+            if (roundResult.textContent.search("win")!==-1) {
+                ++winPlayer;
+                --roundsNb;
+            } else if (roundResult.textContent.search("match")!==-1){
+                --roundsNb;
+                ++matches;
+            }
               ++roundsNb;
-              currrentScore.textContent = " Your score is " + winPlayer + "/" + roundsNb;
-              if (winPlayer == 5) {
-                currrentScore.textContent = " Your score is " + winPlayer + "/" + roundsNb;
+              currrentScore.textContent = " Your score is " + winPlayer + " against " + roundsNb;
+            if (winPlayer == 5) {
+                currrentScore.textContent = " Your score is " + winPlayer + " against " + roundsNb;
                 totalScore.textContent =  "You beat the computer! Click on a button to start again ";
                 roundsNb = 0;
                 winPlayer = 0;
                 matches =0;
-             } else {
-                currrentScore.textContent = " Your score is " + winPlayer + "/" + roundsNb;
+            } else if(roundsNb == 5){
+                currrentScore.textContent = " Your score is " + winPlayer + " against " + roundsNb;
                 totalScore.textContent = "Oh no.. the computer won the game.. Click on a button to start again";
                 roundsNb = 0;
                 winPlayer = 0;
@@ -94,7 +95,7 @@
              }
              resultsDiv.appendChild(currrentScore);
              resultsDiv.appendChild(totalScore);
-            } 
+             
        }
        
    </script>
